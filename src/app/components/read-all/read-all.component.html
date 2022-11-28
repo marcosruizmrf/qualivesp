@@ -1,0 +1,51 @@
+<div class="container">
+
+    <div class="badge">
+        <button routerLink="create" class="novo-todo mat-elevation-z8" mat-flat-button color="primary">Criar novo Relatório</button><button (click)="navegarParaFinalizados()" mat-flat-button color="accent" matBadge="{{ closed }}">Relatórios</button>
+    </div>
+
+
+
+    <div class="content" *ngFor="let item of list">
+        <mat-card class="mat-elevation-z8">
+            <p>Data de emissão: {{ item.dataParaFinalizar }}</p>
+            <mat-card-header>
+                <mat-card-subtitle>RNC Nº: {{ item.rnc }}</mat-card-subtitle>
+                <mat-card-subtitle>Descrição do Produto: {{ item.descricaoDoProduto }}</mat-card-subtitle>
+                <mat-card-subtitle>Código da Peça: {{ item.codigoDaPeca }}</mat-card-subtitle>
+                <mat-card-subtitle>Descrição da Não Conformidade: {{ item.descricaoNaoConformidade }}</mat-card-subtitle>
+                <mat-card-subtitle>Disposição: {{ item.disposicao }}</mat-card-subtitle>
+                <mat-card-subtitle>Responsável: {{ item.responsavel }}</mat-card-subtitle>
+                <mat-card-subtitle>Ordem de Produção: {{ item.ordemDeProducao }}</mat-card-subtitle>
+
+                <!--
+                <div class="note-contents">
+                    <h3>Selecione a data de finalização da solicitação: </h3>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="picker">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                -->
+
+            </mat-card-header>
+
+            <div class="actions">
+
+                <button (click)="finalizar(item)" mat-mini-fab color="basic">
+                    <mat-icon>done</mat-icon>
+                </button>
+                <button routerLink="update/{{ item.id }}" mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="delete(item.id)" mat-mini-fab color="accent">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+
+
+        </mat-card>
+    </div>
+</div>
